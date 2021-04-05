@@ -2,11 +2,10 @@ import React from 'react'
 import { graphql } from 'gatsby'
 import { mapEdgesToNodes } from '../lib/helpers'
 import BlogPostPreviewGrid from '../components/BlogPostPreviewGrid/BlogPostPreviewGrid'
-import { Container, Box } from '@chakra-ui/react'
+import { Container, Box, Grid } from '@chakra-ui/react'
 import GraphQLErrorList from '../components/graphql-error-list'
 import SEO from '../components/SEO/SEO'
-import Layout from '../containers/layout'
-
+import Layout from "../containers/layout"
 
 export const query = graphql`
   query BlogPageQuery {
@@ -32,31 +31,28 @@ export const query = graphql`
     }
   }
 `
-
 const BlogPage = (props) => {
   const { data, errors } = props
 
   if (errors) {
     return (
-      <Layout>
+      <Box>
         <GraphQLErrorList errors={errors} />
-      </Layout>
+      </Box>
     )
   }
 
   const postNodes = data && data.posts && mapEdgesToNodes(data.posts)
 
   return (
-    <Layout>
+    <Grid>
       <SEO title="Blog" />
-      <Container>
-        <Box>
-            {postNodes && postNodes.length > 0 && (
-            <BlogPostPreviewGrid nodes={postNodes} />
-          )}
-        </Box>
-      </Container>
-    </Layout>
+      <Layout mt="4">
+        {postNodes && postNodes.length > 0 && (
+          <BlogPostPreviewGrid nodes={postNodes} />
+        )}
+      </Layout>
+    </Grid>
   )
 }
 

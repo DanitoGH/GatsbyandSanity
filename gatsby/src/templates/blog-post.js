@@ -1,10 +1,9 @@
 import React from 'react'
 import { graphql } from 'gatsby'
-import { Container } from '@chakra-ui/react'
+import { Container, Box } from '@chakra-ui/react'
 import GraphQLErrorList from '../components/graphql-error-list'
 import BlogPost from '../components/BlogPost/BlogPost'
 import SEO from '../components/SEO/SEO'
-import Layout from '../containers/layout'
 import { toPlainText } from '../lib/helpers'
 
 export const query = graphql`
@@ -61,7 +60,7 @@ const BlogPostTemplate = (props) => {
   const { data, errors } = props
   const post = data && data.post
   return (
-    <Layout>
+    <Box>
       {errors && <SEO title="GraphQL Error" />}
       {post && (
         <SEO
@@ -78,7 +77,7 @@ const BlogPostTemplate = (props) => {
       )}
 
       {post && <BlogPost {...post} />}
-    </Layout>
+    </Box>
   )
 }
 

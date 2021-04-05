@@ -3,13 +3,13 @@ import { format, distanceInWords, differenceInDays } from "date-fns"
 import { buildImageObj } from "../../lib/helpers"
 import { imageUrlFor } from "../../lib/image-url"
 import PortableText from "../portableText"
-import { Box, Image , Heading , Text } from '@chakra-ui/react'
+import { Container,  Box, Image , Heading , Text } from '@chakra-ui/react'
 
 function BlogPost(props) {
   const { _rawBody, title, mainImage, publishedAt } = props
   return (
-    <Box mt="6">
-      {mainImage && mainImage.asset && (
+    <Container mt="6">
+      { mainImage && mainImage.asset && (
         <div className="mainImage">
           <Image
             src={imageUrlFor(buildImageObj(mainImage))
@@ -34,7 +34,7 @@ function BlogPost(props) {
         )}
         {_rawBody && <PortableText blocks={_rawBody} />}
       </Box>
-    </Box>
+    </Container>
   )
 }
 

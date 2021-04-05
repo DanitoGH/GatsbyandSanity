@@ -3,7 +3,7 @@ import { graphql } from "gatsby"
 import { Container } from '@chakra-ui/react'
 import GraphQLErrorList from "../components/graphql-error-list"
 import SEO from "../components/SEO/SEO"
-import Layout from "../containers/layout"
+import Layout from "../components/Layout/Layout"
 
 export const query = graphql`
 fragment SanityImage on SanityMainImage {
