@@ -2,7 +2,7 @@ import React from 'react'
 import { graphql } from 'gatsby'
 import { mapEdgesToNodes } from '../lib/helpers'
 import BlogPostPreviewGrid from '../components/BlogPostPreviewGrid/BlogPostPreviewGrid'
-import { Container, Box, Grid } from '@chakra-ui/react'
+import { Container, Box, Flex } from '@chakra-ui/react'
 import GraphQLErrorList from '../components/graphql-error-list'
 import SEO from '../components/SEO/SEO'
 import Layout from "../containers/layout"
@@ -45,14 +45,14 @@ const BlogPage = (props) => {
   const postNodes = data && data.posts && mapEdgesToNodes(data.posts)
 
   return (
-    <Grid>
+    <Layout>
       <SEO title="Blog" />
-      <Layout mt="4">
+      <Flex mt="4">
         {postNodes && postNodes.length > 0 && (
           <BlogPostPreviewGrid nodes={postNodes} />
         )}
-      </Layout>
-    </Grid>
+      </Flex>
+    </Layout>
   )
 }
 
